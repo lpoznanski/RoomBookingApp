@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RoomBookingApp</title>
+</head>
+<body>
+    <!--    Nav-->
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">All rooms</a></li>
+            <li><a href="#">Add new room</a></li>
+        </ul>
+    </nav>
+    <!--    Nav-->
+    <!--    Table-->
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Capacity</th>
+                <th>Availability</th>
+                <th>Projector</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for room in rooms %}
+            <tr>
+                <td>{{ forloop.counter }}.</td>
+                <td>{{ room.name }}</td>
+                <td>{{ room.capacity }}</td>
+                <td></td>
+                <td>{{ room.projector_availability }}</td>
+                <td><button href="/room/edit/{{ room.id }}/" title="Edit room details">Edit</button></td>
+                <td><a href="/room/delete/{{ room.id }}/"><button title="Delete room">Delete</button></a></td>
+                <td><button href="/room/book/{{ room.id }}/" title="Make a booking">Book</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!--    Table-->
+    <!--    Footer-->
+    <footer>
+        <p>Simple room booking app based on Django</p>
+        <p>Author: Lukasz Poznanski</p>
+        <p><a href="mailto:lpoznanski3@gmail.com">l.poznanski3@gmail.com</a></p>
+    </footer>
+    <!--    Footer-->
+</body>
+</html>

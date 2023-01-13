@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--    Nav-->
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">All rooms</a></li>
+            <li><a href="#">Add new room</a></li>
+        </ul>
+    </nav>
+    <!--    Nav-->
+    <!--    Form-->
+    <form method="POST"> {% csrf_token %}
+        <h3>Edit room</h3>
+        <label>Name: <input type="text" name="name" placeholder=""></label>
+        <label>Capacity: <input type="number" name="capacity" placeholder=""></label>
+        <label>Projector availability: <input type="checkbox" name=""></label>
+        <input type="submit" value="Add">
+    </form>
+    <!--    Form-->
+    {% if error %}
+    <!-- Form error -->
+    <div>
+    {{error}}
+    </div>
+    <!-- Form error -->
+    <!--    Footer-->
+    <footer>
+        <p>Simple room booking app based on Django</p>
+        <p>Author: Lukasz Poznanski</p>
+        <p><a href="mailto:lpoznanski3@gmail.com">l.poznanski3@gmail.com</a></p>
+    </footer>
+    <!--    Footer-->
+</body>
+</html>
