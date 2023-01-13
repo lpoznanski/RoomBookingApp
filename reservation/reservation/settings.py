@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-v)_25t!^eaqfwv!xww(+yv(!cx5glmlaqzk8!ubk15w6ku&&3z'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -79,8 +79,8 @@ DATABASES = {
         'HOST': '127.0.0.1',
         'NAME': 'booking_db',
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'USER': 'postgres',
-        'PASSWORD': 'coderslab',
+        'USER': '',
+        'PASSWORD': '',
     }
 }
 
