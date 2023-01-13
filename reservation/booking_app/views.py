@@ -31,10 +31,43 @@ class AddNewRoomView(View):
 class RoomListView(View):
     def get(self, request):
         rooms = Room.objects.all()
-        return render(request, 'room_list.html', context={'rooms': rooms})
+        if rooms:
+            return render(request, 'room_list.html', context={'rooms': rooms})
+        else:
+            return render(request, 'room_list.html', context={'error': 'No rooms available'})
 
 class DeleteRoomView(View):
     def get(self, request, id):
         Room.objects.get(id=id).delete()
         return redirect('/')
+
+class EditRoomView(View):
+    def get(self, request, id):
+        room = Room.objects.get(id=id)
+        return render(request, 'edit_room.html', context={'room': room})
+
+    def post(self, request, id):
+        room = Room.objects.get(id=id)
+        name = request.POST.get('name')
+        capacity = request.POST.get('capacity')
+        capacity = int(capacity) if capacity else 0
+        projector_availability = request.POST.get('projector_availability') == 'on'
+
+        if not name:
+            return render(request, 'edit_room.html', context={'room': room, 'error': 'Room name not entered'})
+        if capacity <= 0:
+            return render(request, 'edit_room.html', context={'room': room, 'error': 'Room capacity must be a positive number'})
+        if Room.objects.filter(name=name).first() and name != room.name:
+            return render(request, 'edit_room.html', context={'room': room, 'error': 'Room with the given name already exists.'})
+
+        room.name = name
+        room.capacity = capacity
+        room.projector_availability = projector_availability
+        room.save()
+
+        return redirect('/')
+
+
+class BookRoomView(View):
+    pass
 

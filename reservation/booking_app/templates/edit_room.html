@@ -2,25 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>RoomBookingApp</title>
 </head>
 <body>
     <!--    Nav-->
     <nav>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">All rooms</a></li>
-            <li><a href="#">Add new room</a></li>
+            <li><a href="/">All rooms</a></li>
+            <li><a href="/room/new/">Add new room</a></li>
         </ul>
     </nav>
     <!--    Nav-->
     <!--    Form-->
     <form method="POST"> {% csrf_token %}
         <h3>Edit room</h3>
-        <label>Name: <input type="text" name="name" placeholder=""></label>
-        <label>Capacity: <input type="number" name="capacity" placeholder=""></label>
-        <label>Projector availability: <input type="checkbox" name=""></label>
-        <input type="submit" value="Add">
+        <label>Name: <input type="text" name="name" value="{{ room.name }}"></label>
+        <label>Capacity: <input type="number" name="capacity" value="{{ room.capacity }}"></label>
+        <label>Projector availability: <input type="checkbox" name="projector.availability" {% if room.projector_availability %} checked {% endif %}></label>
+        <input type="submit" value="Update">
     </form>
     <!--    Form-->
     {% if error %}
@@ -28,6 +27,7 @@
     <div>
     {{error}}
     </div>
+    {% endif %}
     <!-- Form error -->
     <!--    Footer-->
     <footer>

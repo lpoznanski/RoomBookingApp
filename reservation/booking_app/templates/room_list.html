@@ -8,9 +8,8 @@
     <!--    Nav-->
     <nav>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">All rooms</a></li>
-            <li><a href="#">Add new room</a></li>
+            <li><a href="/">All rooms</a></li>
+            <li><a href="/room/new/">Add new room</a></li>
         </ul>
     </nav>
     <!--    Nav-->
@@ -35,15 +34,22 @@
                 <td>{{ room.name }}</td>
                 <td>{{ room.capacity }}</td>
                 <td></td>
-                <td>{{ room.projector_availability }}</td>
-                <td><button href="/room/edit/{{ room.id }}/" title="Edit room details">Edit</button></td>
+                <td>{% if room.projector_availability == 1 %}&check;{% else %}&cross;{% endif %}</td>
+                <td><a href="/room/edit/{{ room.id }}/"><button title="Edit room details">Edit</button></a></td>
                 <td><a href="/room/delete/{{ room.id }}/"><button title="Delete room">Delete</button></a></td>
-                <td><button href="/room/book/{{ room.id }}/" title="Make a booking">Book</button></td>
+                <td><a href="/room/book/{{ room.id }}/"><button title="Make a booking">Book</button></a></td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
     <!--    Table-->
+    {% if error %}
+    <!-- Error -->
+    <div>
+    {{error}}
+    </div>
+    <!-- Error -->
+    {% endif %}
     <!--    Footer-->
     <footer>
         <p>Simple room booking app based on Django</p>
