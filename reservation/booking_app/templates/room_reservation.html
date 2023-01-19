@@ -13,22 +13,21 @@
         </ul>
     </nav>
     <!--    Nav-->
-    <!--    Form-->
+    <!-- Form-->
     <form method="POST"> {% csrf_token %}
-        <h3>Edit room</h3>
-        <label>Name: <input type="text" name="name" value="{{ room.name }}"></label>
-        <label>Capacity: <input type="number" name="capacity" value="{{ room.capacity }}"></label>
-        <label>Projector availability: <input type="checkbox" name="projector.availability"{% if room.projector_availability %} checked {% endif %}></label>
-        <input type="submit" value="Update">
+        <h3>Book room {{ room.name }}</h3>
+        <label>Date: <input type="date" name="date" required></label>
+        <label>Comment: <textarea name="comment"></textarea></label>
+        <input type="submit" value="Add reservation">
     </form>
     <!--    Form-->
-    <!-- Form error -->
+    <!--    Error-->
     {% if error %}
     <div>
     {{error}}
     </div>
     {% endif %}
-    <!-- Form error -->
+    <!--    Error-->
     <!--    Footer-->
     <footer>
         <p>Simple room booking app based on Django</p>

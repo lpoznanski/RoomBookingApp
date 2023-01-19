@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.views import View
 
-from booking_app.models import Room
+from datetime import datetime
+
+from booking_app.models import Room, RoomReservation
 
 
 # Create your views here.
@@ -51,7 +53,7 @@ class EditRoomView(View):
         name = request.POST.get('name')
         capacity = request.POST.get('capacity')
         capacity = int(capacity) if capacity else 0
-        projector_availability = request.POST.get('projector_availability') == 'on'
+        projector_availability = request.POST.get('projector_availability') == "on"
 
         if not name:
             return render(request, 'edit_room.html', context={'room': room, 'error': 'Room name not entered'})
@@ -69,5 +71,28 @@ class EditRoomView(View):
 
 
 class BookRoomView(View):
-    pass
+    def get(self, request, id):
+        room = Room.objects.get(id=id)
+        return render(
+            request,
+            'room_reservation.html',
+            context = {
+                'room': room
+            }
+        )
+
+    def post(self, request, id):
+        room = Room.objects.get(id=id)
+        date = request.POST.get('date')
+        comment = request.POST.get('comment')
+
+        if datetime.strptime(date, '%Y-%m-%d') < datetime.now():
+            return render(request, 'room_reservation.html', context={'room': room, 'error': 'Unable to make reservations in the past'})
+        if RoomReservation.objects.filter(date=date).first() and room == room:
+            return render(request, 'room_reservation.html', context={'room': room, 'error': 'Room already booked on this date'})
+
+        RoomReservation.objects.create(room=room, date=date, comment=comment)
+
+        return redirect('/')
+
 
