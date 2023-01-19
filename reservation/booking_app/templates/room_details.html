@@ -17,27 +17,37 @@
     <table>
         <thead>
             <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Capacity</th>
-                <th>Availability</th>
-                <th>Projector</th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th>Room details:</th>
             </tr>
         </thead>
         <tbody>
-            {% for room in rooms %}
             <tr>
-                <td>{{ forloop.counter }}.</td>
-                <td><a href="/room/details/{{ room.id }}/">{{ room.name }}</a></td>
+                <td>Name:</td>
+                <td>{{ room.name }}</td>
+            <tr>
+                <td>Capacity:</td>
                 <td>{{ room.capacity }}</td>
-                <td></td>
+            </tr>
+            <tr>
+                <td>Projector:</td>
                 <td>{% if room.projector_availability == 1 %}&check;{% else %}&cross;{% endif %}</td>
-                <td><a href="/room/edit/{{ room.id }}/"><button title="Edit room details">Edit</button></a></td>
-                <td><a href="/room/delete/{{ room.id }}/"><button title="Delete room">Delete</button></a></td>
-                <td><a href="/room/book/{{ room.id }}/"><button title="Make a booking">Book</button></a></td>
+            </tr>
+            <tr>
+                <td><a href="/room/edit/{{ room.id }}/"><button title="Edit room details">Edit</button></a>
+                <a href="/room/delete/{{ room.id }}/"><button title="Delete room">Delete</button></a>
+                <a href="/room/book/{{ room.id }}/"><button title="Make a booking">Book</button></a></td>
+            </tr>
+        </tbody>
+        <thead>
+            <tr>
+                <th>Reservations:</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.date }}</td>
+                <td>{{ reservation.comment }}</td>
             </tr>
             {% endfor %}
         </tbody>

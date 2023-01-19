@@ -96,3 +96,16 @@ class BookRoomView(View):
         return redirect('/')
 
 
+class RoomDetailsView(View):
+    def get(self, request, id):
+        room = Room.objects.get(id=id)
+        reservations = RoomReservation.objects.filter(room=id)
+
+        return render(
+            request,
+            'room_details.html',
+            context={
+                'room': room,
+                'reservations': reservations
+            }
+        )
