@@ -34,12 +34,12 @@ class RoomListView(View):
     def get(self, request):
         rooms = Room.objects.all()
         for room in rooms:
-            reservation_dates = [reservation.date for reservation in room.roomreservation_set.all()]
+            reservation_dates = [str(reservation.date) for reservation in room.roomreservation_set.all()]
             room.reserved = str(date.today()) in reservation_dates
-        # if rooms:
-        return render(request, 'room_list.html', context={'rooms': rooms, 'date': date.today()})
-        # else:
-        #     return render(request, 'room_list.html', context={'error': 'No rooms available'})
+        if rooms:
+            return render(request, 'room_list.html', context={'rooms': rooms, 'date': date.today()})
+        else:
+            return render(request, 'room_list.html', context={'error': 'No rooms available'})
 
 class DeleteRoomView(View):
     def get(self, request, id):
@@ -130,7 +130,7 @@ class RoomSearchView(View):
             rooms = rooms.filter(projector_availability=projector_availability)
 
         for room in rooms:
-            reservation_dates = [reservation.date for reservation in room.roomreservation_set.all()]
+            reservation_dates = [str(reservation.date) for reservation in room.roomreservation_set.all()]
             room.reserved = str(date.today()) in reservation_dates
 
         return render(
