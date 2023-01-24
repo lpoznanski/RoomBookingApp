@@ -120,10 +120,11 @@ class RoomSearchView(View):
         rooms = Room.objects.all()
         name = request.GET.get('name')
         capacity = request.GET.get('capacity')
+        capacity = int(capacity) if capacity else 0
         projector_availability = request.GET.get('projector_availability') == 'on'
 
         if name:
-            rooms = rooms.filter(name__contains=name)
+            rooms = rooms.filter(name__icontains=name)
         if capacity:
             rooms = rooms.filter(capacity__gte=capacity)
         if projector_availability:
@@ -133,11 +134,7 @@ class RoomSearchView(View):
             reservation_dates = [str(reservation.date) for reservation in room.roomreservation_set.all()]
             room.reserved = str(date.today()) in reservation_dates
 
-        return render(
-            request,
-            'room_list.html',
-            context = {
-                'rooms': rooms,
-                'date': date.today()
-            }
-        )
+        if rooms:
+            return render(request, 'room_list.html', context={'rooms': rooms, 'date': date.today()})
+        else:
+            return render(request, 'room_list.html', context={'error': 'No rooms matching your search'})
