@@ -28,6 +28,23 @@
     </div>
     {% endif %}
     <!--    Error-->
+    <!--    Table-->
+    <table>
+    <thead>
+            <tr>
+                <th>Reservations:</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.date }}</td>
+                <td>{{ reservation.comment }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!--    Table-->
     <!--    Footer-->
     <footer>
         <p>Simple room booking app based on Django</p>

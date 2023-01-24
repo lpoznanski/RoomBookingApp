@@ -53,7 +53,7 @@ class EditRoomView(View):
         name = request.POST.get('name')
         capacity = request.POST.get('capacity')
         capacity = int(capacity) if capacity else 0
-        projector_availability = request.POST.get('projector_availability') == "on"
+        projector_availability = request.POST.get('projector_availability') == 'on'
 
         if not name:
             return render(request, 'edit_room.html', context={'room': room, 'error': 'Room name not entered'})
@@ -73,11 +73,13 @@ class EditRoomView(View):
 class BookRoomView(View):
     def get(self, request, id):
         room = Room.objects.get(id=id)
+        reservations = RoomReservation.objects.filter(room=id)
         return render(
             request,
             'room_reservation.html',
             context = {
-                'room': room
+                'room': room,
+                'reservations': reservations
             }
         )
 

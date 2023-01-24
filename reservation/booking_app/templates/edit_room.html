@@ -18,7 +18,7 @@
         <h3>Edit room</h3>
         <label>Name: <input type="text" name="name" value="{{ room.name }}"></label>
         <label>Capacity: <input type="number" name="capacity" value="{{ room.capacity }}"></label>
-        <label>Projector availability: <input type="checkbox" name="projector.availability"{% if room.projector_availability %} checked {% endif %}></label>
+        <label>Projector availability: <input type="checkbox" name="projector.availability" {% if room.projector_availability %} checked {% endif %}></label>
         <input type="submit" value="Update">
     </form>
     <!--    Form-->

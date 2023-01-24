@@ -33,7 +33,7 @@
                 <td>{{ forloop.counter }}.</td>
                 <td><a href="/room/details/{{ room.id }}/">{{ room.name }}</a></td>
                 <td>{{ room.capacity }}</td>
-                <td></td>
+                <td>{{ reservation_dates }}</td>
                 <td>{% if room.projector_availability == 1 %}&check;{% else %}&cross;{% endif %}</td>
                 <td><a href="/room/edit/{{ room.id }}/"><button title="Edit room details">Edit</button></a></td>
                 <td><a href="/room/delete/{{ room.id }}/"><button title="Delete room">Delete</button></a></td>
