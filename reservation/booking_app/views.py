@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 
-from datetime import datetime
+from datetime import datetime, date
 
 from booking_app.models import Room, RoomReservation
 
@@ -33,10 +33,13 @@ class AddNewRoomView(View):
 class RoomListView(View):
     def get(self, request):
         rooms = Room.objects.all()
-        if rooms:
-            return render(request, 'room_list.html', context={'rooms': rooms})
-        else:
-            return render(request, 'room_list.html', context={'error': 'No rooms available'})
+        for room in rooms:
+            reservation_dates = [reservation.date for reservation in room.roomreservation_set.all()]
+            room.reserved = str(date.today()) in reservation_dates
+        # if rooms:
+        return render(request, 'room_list.html', context={'rooms': rooms, 'date': date.today()})
+        # else:
+        #     return render(request, 'room_list.html', context={'error': 'No rooms available'})
 
 class DeleteRoomView(View):
     def get(self, request, id):
@@ -109,5 +112,32 @@ class RoomDetailsView(View):
             context={
                 'room': room,
                 'reservations': reservations
+            }
+        )
+
+class RoomSearchView(View):
+    def get(self, request):
+        rooms = Room.objects.all()
+        name = request.GET.get('name')
+        capacity = request.GET.get('capacity')
+        projector_availability = request.GET.get('projector_availability') == 'on'
+
+        if name:
+            rooms = rooms.filter(name__contains=name)
+        if capacity:
+            rooms = rooms.filter(capacity__gte=capacity)
+        if projector_availability:
+            rooms = rooms.filter(projector_availability=projector_availability)
+
+        for room in rooms:
+            reservation_dates = [reservation.date for reservation in room.roomreservation_set.all()]
+            room.reserved = str(date.today()) in reservation_dates
+
+        return render(
+            request,
+            'room_list.html',
+            context = {
+                'rooms': rooms,
+                'date': date.today()
             }
         )

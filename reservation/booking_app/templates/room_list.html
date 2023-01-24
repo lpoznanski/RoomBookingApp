@@ -33,7 +33,11 @@
                 <td>{{ forloop.counter }}.</td>
                 <td><a href="/room/details/{{ room.id }}/">{{ room.name }}</a></td>
                 <td>{{ room.capacity }}</td>
-                <td>{{ reservation_dates }}</td>
+                {% if room.reserved %}
+                <td>{{ room.reserved }}</td>
+                {% else %}
+                <td>{{ room.reserved }}</td>
+                {% endif %}
                 <td>{% if room.projector_availability == 1 %}&check;{% else %}&cross;{% endif %}</td>
                 <td><a href="/room/edit/{{ room.id }}/"><button title="Edit room details">Edit</button></a></td>
                 <td><a href="/room/delete/{{ room.id }}/"><button title="Delete room">Delete</button></a></td>
@@ -43,13 +47,22 @@
         </tbody>
     </table>
     <!--    Table-->
-    {% if error %}
     <!-- Error -->
+    {% if error %}
     <div>
     {{error}}
     </div>
-    <!-- Error -->
     {% endif %}
+    <!-- Error -->
+    <!--    Form-->
+    <form action="/search/">
+        <h3>Search for a room</h3>
+        <label>Name: <input type="text" name="name" placeholder="insert room name"></label>
+        <label>Minimum capacity: <input type="number" name="capacity" placeholder="insert room capacity"></label>
+        <label>Projector availability: <input type="checkbox" name="projector_availability"></label>
+        <input type="submit" value="Search">
+    </form>
+    <!--    Form-->
     <!--    Footer-->
     <footer>
         <p>Simple room booking app based on Django</p>
