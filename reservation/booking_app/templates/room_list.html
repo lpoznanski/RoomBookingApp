@@ -34,9 +34,9 @@
                 <td><a href="/room/details/{{ room.id }}/">{{ room.name }}</a></td>
                 <td>{{ room.capacity }}</td>
                 {% if room.reserved %}
-                <td>{{ room.reserved }}</td>
+                <td>Booked</td>
                 {% else %}
-                <td>{{ room.reserved }}</td>
+                <td>Available</td>
                 {% endif %}
                 <td>{% if room.projector_availability == 1 %}&check;{% else %}&cross;{% endif %}</td>
                 <td><a href="/room/edit/{{ room.id }}/"><button title="Edit room details">Edit</button></a></td>
