@@ -133,6 +133,8 @@ class RoomSearchView(View):
         for room in rooms:
             reservation_dates = [str(reservation.date) for reservation in room.roomreservation_set.all()]
             room.reserved = str(date.today()) in reservation_dates
+            if room.reserved:
+                rooms = rooms.exclude(id=room.id)
 
         if rooms:
             return render(request, 'room_list.html', context={'rooms': rooms, 'date': date.today()})
