@@ -7,70 +7,72 @@
     <title>RoomBookingApp</title>
 </head>
 <body>
-    <!--    Nav-->
-    <nav>
-        <ul>
-            <li><a href="/">All rooms</a></li>
-            <li><a href="/room/new/">Add new room</a></li>
-        </ul>
-    </nav>
-    <!--    Nav-->
-    <!--    Table-->
-    <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Capacity</th>
-                <th>Availability</th>
-                <th>Projector</th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for room in rooms %}
-            <tr>
-                <td>{{ forloop.counter }}.</td>
-                <td><a href="/room/details/{{ room.id }}/">{{ room.name }}</a></td>
-                <td>{{ room.capacity }}</td>
-                {% if room.reserved %}
-                <td>Booked</td>
-                {% else %}
-                <td>Available</td>
-                {% endif %}
-                <td>{% if room.projector_availability == 1 %}&check;{% else %}&cross;{% endif %}</td>
-                <td><a href="/room/edit/{{ room.id }}/"><button title="Edit room details">Edit</button></a></td>
-                <td><a href="/room/delete/{{ room.id }}/"><button title="Delete room">Delete</button></a></td>
-                <td><a href="/room/book/{{ room.id }}/"><button title="Make a booking">Book</button></a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <!--    Table-->
-    <!-- Error -->
-    {% if error %}
-    <div>
-    {{error}}
+    <div class="container">
+        <!--    Nav-->
+        <nav>
+            <ul>
+                <li><a href="/">All rooms</a></li>
+                <li><a href="/room/new/">Add new room</a></li>
+            </ul>
+        </nav>
+        <!--    Nav-->
+        <!--    Table-->
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Capacity</th>
+                    <th>Availability</th>
+                    <th>Projector</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for room in rooms %}
+                <tr>
+                    <td>{{ forloop.counter }}.</td>
+                    <td><a href="/room/details/{{ room.id }}/">{{ room.name }}</a></td>
+                    <td>{{ room.capacity }}</td>
+                    {% if room.reserved %}
+                    <td>Booked</td>
+                    {% else %}
+                    <td>Available</td>
+                    {% endif %}
+                    <td>{% if room.projector_availability == 1 %}&check;{% else %}&cross;{% endif %}</td>
+                    <td><a href="/room/edit/{{ room.id }}/"><button title="Edit room details">Edit</button></a></td>
+                    <td><a href="/room/delete/{{ room.id }}/"><button title="Delete room">Delete</button></a></td>
+                    <td><a href="/room/book/{{ room.id }}/"><button title="Make a booking">Book</button></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <!--    Table-->
+        <!-- Error -->
+        {% if error %}
+        <div>
+        {{error}}
+        </div>
+        {% endif %}
+        <!-- Error -->
+        <!--    Form-->
+        <form action="/search/">
+            <h3>Search for a room</h3>
+            <label>Name: <input type="text" name="name" placeholder="insert room name"></label>
+            <label>Minimum capacity: <input type="number" name="capacity" placeholder="insert room capacity"></label>
+            <label>Projector availability: <input type="checkbox" name="projector_availability"></label>
+            <input type="submit" value="Search">
+        </form>
+        <!--    Form-->
+        <!--    Footer-->
+        <footer>
+            <p>Simple room booking app based on Django</p>
+            <p>Author: Lukasz Poznanski</p>
+            <p><a href="mailto:lpoznanski3@gmail.com">l.poznanski3@gmail.com</a></p>
+        </footer>
+        <!--    Footer-->
     </div>
-    {% endif %}
-    <!-- Error -->
-    <!--    Form-->
-    <form action="/search/">
-        <h3>Search for a room</h3>
-        <label>Name: <input type="text" name="name" placeholder="insert room name"></label>
-        <label>Minimum capacity: <input type="number" name="capacity" placeholder="insert room capacity"></label>
-        <label>Projector availability: <input type="checkbox" name="projector_availability"></label>
-        <input type="submit" value="Search">
-    </form>
-    <!--    Form-->
-    <!--    Footer-->
-    <footer>
-        <p>Simple room booking app based on Django</p>
-        <p>Author: Lukasz Poznanski</p>
-        <p><a href="mailto:lpoznanski3@gmail.com">l.poznanski3@gmail.com</a></p>
-    </footer>
-    <!--    Footer-->
 </body>
 </html>
