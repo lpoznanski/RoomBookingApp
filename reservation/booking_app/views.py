@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 
 from booking_app.models import Room, RoomReservation
 
@@ -91,9 +91,9 @@ class BookRoomView(View):
         date = request.POST.get('date')
         comment = request.POST.get('comment')
 
-        if datetime.strptime(date, '%Y-%m-%d') < datetime.now():
+        if datetime.strptime(date, '%Y-%m-%d') < datetime.today() - timedelta(days=1):
             return render(request, 'room_reservation.html', context={'room': room, 'error': 'Unable to make reservations in the past'})
-        if RoomReservation.objects.filter(date=date).first() and room == room:
+        if RoomReservation.objects.filter(room=room, date=date):
             return render(request, 'room_reservation.html', context={'room': room, 'error': 'Room already booked on this date'})
 
         RoomReservation.objects.create(room=room, date=date, comment=comment)
