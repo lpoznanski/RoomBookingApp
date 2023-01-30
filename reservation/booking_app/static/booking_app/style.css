@@ -36,12 +36,37 @@ nav ul li{
 nav ul li a{
     text-decoration: none;
     color: #002e2c;
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
 }
 
 table{
     width: 80%;
     heigth: 600px;
     text-align: center;
-    background: #e3e7af;
+    background: #a2a77f;
 }
 
+th{
+    color: #002e2c;
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+}
+
+td{
+    background: #e3e7af;
+    border-radius: 4px;
+    color: #002e2c;
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+}
+
+td a{
+    text-decoration: none;
+    color: #002e2c;
+}
+
+td button{
+    background: #e3e7af;
+    width: 100%;
+    border-radius: 6px;
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+    color: #002e2c;
+}
