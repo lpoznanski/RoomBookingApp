@@ -26,10 +26,14 @@ nav{
 nav ul li{
     display: inline-block;
     background: linear-gradient(45deg, #144C8B, #1E3C59);
+    /*background: #144C8B;*/
     border-radius: 6px;
     padding: 10px 20px;
     box-sizing: border-box;
     box-shadow: 3px 8px 22px #e3e7af;
+    /*border-style: ridge;*/
+    /*border-color: #1C252B;*/
+
 }
 
 nav ul li a{
@@ -38,6 +42,7 @@ nav ul li a{
     font-weight: bold;
     color: #FEFEFE;
     font-family: gill sans, sans-serif;
+
 }
 
 table{
@@ -53,13 +58,13 @@ th{
     padding-bottom: 10px;
     padding-top: 10px;
     text-transform: uppercase;
+    text-shadow: 1px 1px #83B0E3;
 }
 
 td{
     border-radius: 4px;
     color: #1C252B;
     font-family: gill sans, sans-serif;
-
 }
 
 td a{
@@ -76,6 +81,7 @@ td button{
     border-radius: 6px;
     font-family: gill sans, sans-serif;
     color: #1C252B;
+    border-color: #1C252B;
 }
 
 .buttons{
@@ -86,6 +92,7 @@ td button{
     background-color: #83B0E3;
     padding-top: 15px;
     padding-bottom: 15px;
+    border-style: ridge;
 }
 
 .book{
@@ -109,6 +116,7 @@ form h3{
     padding-top: 10px;
     padding-bottom: 10px;
     text-transform: uppercase;
+    text-shadow: 1px 1px #83B0E3;
 }
 
 form label{
@@ -122,4 +130,28 @@ form label{
     height: 30px;
     border-radius: 6px;
     text-transform: uppercase;
+    border-style: ridge;
+    border-color: #1C252B;
+}
+
+footer{
+    text-align: center;
+    font-family: gill sans, sans-serif;
+    background-color: #FEFEFE;
+    border-radius: 6px;
+    opacity: 0.7;
+}
+
+footer p:first-child{
+    padding-top: 8px;
+    font-style: italic;
+}
+
+footer p:last-child{
+    padding-bottom: 8px;
+}
+
+footer p{
+    color: #1E3C59;
+    font-size: small;
 }
