@@ -4,7 +4,6 @@
 }
 
 .container{
-    height: 100vh;
     width: 100%;
     background-image: url("images/background.jpg");
     background-position: center;
@@ -26,7 +25,7 @@ nav{
 
 nav ul li{
     display: inline-block;
-    background: linear-gradient(45deg, #e3e7af, #a2a77f);
+    background: linear-gradient(45deg, #144C8B, #1E3C59);
     border-radius: 6px;
     padding: 10px 20px;
     box-sizing: border-box;
@@ -35,27 +34,32 @@ nav ul li{
 
 nav ul li a{
     text-decoration: none;
-    color: #002e2c;
-    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #FEFEFE;
+    font-family: gill sans, sans-serif;
 }
 
 table{
     width: 80%;
-    heigth: 600px;
     text-align: center;
-    background: #a2a77f;
+    background: #1E3C59;
+    border-radius: 6px;
 }
 
 th{
-    color: #002e2c;
-    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+    color: #FEFEFE;
+    font-family: gill sans, sans-serif;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-transform: uppercase;
 }
 
 td{
-    background: #e3e7af;
     border-radius: 4px;
-    color: #002e2c;
-    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+    color: #1C252B;
+    font-family: gill sans, sans-serif;
+
 }
 
 td a{
@@ -64,9 +68,58 @@ td a{
 }
 
 td button{
-    background: #e3e7af;
-    width: 100%;
+    background: #83B0E3;
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+    text-transform: uppercase;
     border-radius: 6px;
-    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
-    color: #002e2c;
+    font-family: gill sans, sans-serif;
+    color: #1C252B;
+}
+
+.buttons{
+    background-color: #1E3C59;
+}
+
+.data{
+    background-color: #83B0E3;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.book{
+    font-weight: bold;
+    background-color: #144C8B;
+    color: #FEFEFE;
+}
+
+form{
+    width: 80%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #1E3C59;
+    border-radius: 6px;
+    color: #FEFEFE;
+    font-family: gill sans, sans-serif;
+}
+
+form h3{
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+}
+
+form label{
+    display: inline-block;
+    padding: 10px;
+}
+
+.btn{
+    background: #83B0E3;
+    width: 80px;
+    height: 30px;
+    border-radius: 6px;
+    text-transform: uppercase;
 }

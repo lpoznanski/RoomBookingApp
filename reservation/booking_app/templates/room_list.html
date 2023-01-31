@@ -33,18 +33,18 @@
             <tbody>
                 {% for room in rooms %}
                 <tr>
-                    <td>{{ forloop.counter }}.</td>
-                    <td><a href="/room/details/{{ room.id }}/">{{ room.name }}</a></td>
-                    <td>{{ room.capacity }}</td>
+                    <td class="data">{{ forloop.counter }}.</td>
+                    <td class="data"><a href="/room/details/{{ room.id }}/">{{ room.name }}</a></td>
+                    <td class="data">{{ room.capacity }}</td>
                     {% if room.reserved %}
-                    <td>Booked</td>
+                    <td class="data">Booked</td>
                     {% else %}
-                    <td>Available</td>
+                    <td class="data">Available</td>
                     {% endif %}
-                    <td>{% if room.projector_availability == 1 %}&check;{% else %}&cross;{% endif %}</td>
-                    <td><a href="/room/edit/{{ room.id }}/"><button title="Edit room details">Edit</button></a></td>
-                    <td><a href="/room/delete/{{ room.id }}/"><button title="Delete room">Delete</button></a></td>
-                    <td><a href="/room/book/{{ room.id }}/"><button title="Make a booking">Book</button></a></td>
+                    <td class="data">{% if room.projector_availability == 1 %}&check;{% else %}&cross;{% endif %}</td>
+                    <td class="buttons"><a href="/room/edit/{{ room.id }}/"><button title="Edit room details">Edit</button></a></td>
+                    <td class="buttons"><a href="/room/delete/{{ room.id }}/"><button title="Delete room">Delete</button></a></td>
+                    <td class="buttons"><a href="/room/book/{{ room.id }}/"><button class="book" title="Make a booking">Book</button></a></td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -63,7 +63,7 @@
             <label>Name: <input type="text" name="name" placeholder="insert room name"></label>
             <label>Minimum capacity: <input type="number" name="capacity" placeholder="insert room capacity"></label>
             <label>Projector availability: <input type="checkbox" name="projector_availability"></label>
-            <input type="submit" value="Search">
+            <label><input class="btn" type="submit" value="Search"></label>
         </form>
         <!--    Form-->
         <!--    Footer-->
