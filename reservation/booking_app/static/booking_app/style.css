@@ -104,6 +104,11 @@ td button{
     border-style: ridge;
 }
 
+.data-header{
+    color: #FEFEFE;
+    font-family: gill sans, sans-serif;
+}
+
 .book{
     font-weight: bold;
     background-color: #144C8B;
