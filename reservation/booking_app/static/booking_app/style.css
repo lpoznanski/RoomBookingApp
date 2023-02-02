@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+body{
+    /*height: 100%;*/
+}
+
 .container{
     width: 100%;
     background-image: url("images/background.jpg");
@@ -10,8 +14,13 @@
     background-size: cover;
     padding-left: 5%;
     padding-right: 5%;
+    padding-bottom: 5%;
     box-sizing: border-box;
     position: relative;
+}
+
+.subpage{
+    height: 90vh;
 }
 
 nav{
@@ -135,6 +144,7 @@ form label{
 }
 
 footer{
+    height: 5%;
     text-align: center;
     font-family: gill sans, sans-serif;
     background-color: #FEFEFE;
