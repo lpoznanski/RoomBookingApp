@@ -17,10 +17,7 @@ body{
     padding-bottom: 5%;
     box-sizing: border-box;
     position: relative;
-}
-
-.subpage{
-    height: 90vh;
+    min-height: 90vh;
 }
 
 nav{
@@ -105,8 +102,15 @@ td button{
 }
 
 .data-header{
+    width: 40%;
     color: #FEFEFE;
     font-family: gill sans, sans-serif;
+    font-weight: bold;
+}
+
+.details-btns{
+    padding-top: 3vh;
+    padding-bottom: 3vh;
 }
 
 .book{
@@ -149,7 +153,7 @@ form label{
 }
 
 footer{
-    height: 5%;
+    height: 75px;
     text-align: center;
     font-family: gill sans, sans-serif;
     background-color: #FEFEFE;

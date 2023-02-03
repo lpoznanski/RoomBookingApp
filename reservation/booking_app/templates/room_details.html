@@ -7,7 +7,7 @@
     <title>RoomBookingApp</title>
 </head>
 <body>
-    <div class="container subpage">
+    <div class="container">
     <!--    Nav-->
     <nav>
         <ul>
@@ -20,7 +20,7 @@
     <table>
         <thead>
             <tr>
-                <th>Room details:</th>
+                <th>Room details</th>
             </tr>
         </thead>
         <tbody>
@@ -36,7 +36,7 @@
                 <td class="data">{% if room.projector_availability == 1 %}&check;{% else %}&cross;{% endif %}</td>
             </tr>
             <tr>
-                <td><a href="/room/edit/{{ room.id }}/"><button title="Edit room details">Edit</button></a>
+                <td colspan="2" class="details-btns"><a href="/room/edit/{{ room.id }}/"><button title="Edit room details">Edit</button></a>
                 <a href="/room/delete/{{ room.id }}/"><button title="Delete room">Delete</button></a>
                 <a href="/room/book/{{ room.id }}/"><button title="Make a booking">Book</button></a></td>
             </tr>
